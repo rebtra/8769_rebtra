@@ -352,7 +352,7 @@ svg {
   <font size="5">Around <span id="lt"></span> ago</font><br>
   <font size="3"><span id="ld">4:20 PM April 20, 1969</span></font>
   </div>
-  <div align="center" class="col-q2">Last Change<br>
+  <div align="center" class="col-q2">Last Supply Change<br>
   <font size="5"><span id="tclcp">69.6969</span></font>%<br>
   <font size="3"><span id="tclcn">+/- 666,666.666</span></font>
   </div>
@@ -360,22 +360,31 @@ svg {
   <font size="5">In about <span id="nt"></span></font><br>
   <font size="3"><span id="nd">4:20 PM April 20, 1969</span></font>
   </div>
-  <div align="center" class="col-q2 tooltip">Next Change<br>
+  <div align="center" class="col-q2 tooltip">Next Supply Change<br>
   <font size="5"><span id="tcncp">12.1234</span></font>%<br>
   <font size="3"><span id="tcncn">(estimated)</span></font>
   <span class="inform tooltiptext">NOTE:<br>This is only a prediction.<i>
   <br>It assumes the Oracle price at the time of base will be equal to the current market price.</i></span>
   </div>
-  <div align="center" class="col-q2">USD Market Capitalization<br>=<br>$
+  <div align="center" class="col-q2">USD Market Capitalization<br>$
   <font size="5"><span id="tcmcu">111,222,333,444</span></font>
+  <br>(<span id="tcmcuc"></span>%)
   </div>
-  <div align="center" class="col-q2">ETH Market Capitalization<br>=<br>Ξ
+  <div align="center" class="col-q2">ETH Market Capitalization<br>Ξ
   <font size="5"><span id="tcmce">222,222,222,222</span></font>
+  <br>(<span id="tcmcec"></span>%)
+  </div>
+  <div align="center" class="col-q2">BTC Market Capitalization<br>
+  <font size="5"><span id="tcmcb">111,222,333,444</span></font>BTC
+  <br>(<span id="tcmcbc"></span>%)
   </div>
   <div align="center" class="col-q2">24h USD Volume<br>=<br>$
   <font size="5"><span id="tcvu">222,222,222,222</span></font>
   </div>
   <div align="center" class="col-q2">24h ETH Volume<br>=<br>Ξ
+  <font size="5"><span id="tcve">222,222,222,222</span></font>
+  </div>
+  <div align="center" class="col-q2">24h BTC Volume<br>=<br>Ξ
   <font size="5"><span id="tcve">222,222,222,222</span></font>
   </div>
   <div align="center" class="col-q2">Circulation<br>=<br>
@@ -537,6 +546,8 @@ eg=new XMLHttpRequest();
 eg.open("GET","https://api.coingecko.com/api/v3/coins/coil-crypto/market_chart?vs_currency=eth&days=max",true);
 ug=new XMLHttpRequest();
 ug.open("GET","https://api.coingecko.com/api/v3/coins/coil-crypto/market_chart?vs_currency=usd&days=max",true);
+cg=new XMLHttpRequest();
+cg.open("GET","https://api.coingecko.com/api/v3/simple/price?ids=coil-crypto&vs_currencies=usd%2Cbtc%2Ceth&include_market_cap=true&include_24hr_vol=true&include_24hr_change=true",true);
 ec=new XMLHttpRequest();
 ec.open("GET","https://api.etherscan.io/api?module=logs&action=getLogs&toBlock=latest&address=0x7f0c14f2f72ca782eea2835b9f63d3833b6669ab&topic0=0x41d948a7f29cc695f5d4b3ec147f766bffa165ddd317470fbe05c86d0a9c3e04&apikey=E886KCIJYVFPED7GXEA5PR9I9WHCTBVHJ4",true);
 function mt(xD)
@@ -698,8 +709,9 @@ With ++♡;
 function chart3(gU)
 {
 //for the USD price chart
+/*
 	var TCMPU = document.getElementById('tcmpu');
-	TCMPU.textContent = gU[gU.length-1][1].toFixed(9);
+	TCMPU.textContent = gU[gU.length-1][1].toFixed(9);*/
 	//TEMPORARY FIX
 	//ORACLE PRICE
 	//NEXT BASE (CHANGE) CALCULATION
@@ -721,36 +733,36 @@ function chart3(gU)
 function chart4(gE)
 {
 //for the ETH Price chart
-	var TCPUN = document.getElementById('tcpun');
-	TCPUN.textContent = gE[gE.length-1][1].toFixed(9);
+// 	var TCPUN = document.getElementById('tcpun');
+// 	TCPUN.textContent = gE[gE.length-1][1].toFixed(9);
 	brr("#svg04",gE);
 }
 function chart5(gU)
 {
 //for the USD MktCap chart
-	var TCMCU = document.getElementById('tcmcu');
-	TCMCU.textContent = gU[gU.length-1][1].toFixed(9);
+// 	var TCMCU = document.getElementById('tcmcu');
+// 	TCMCU.textContent = gU[gU.length-1][1].toFixed(9);
 	brr("#svg05",gU);
 }
 function chart6(gE)
 {
 //for the ETH MktCap chart
-	var TCMCE = document.getElementById('tcmce');
-	TCMCE.textContent = gE[gE.length-1][1].toFixed(9);
+// 	var TCMCE = document.getElementById('tcmce');
+// 	TCMCE.textContent = gE[gE.length-1][1].toFixed(9);
 	brr("#svg06",gE);
 }
 function chart7(gU)
 {
 //for the USD Volume chart
-	var TCVU = document.getElementById('tcvu');
-	TCVU.textContent = gU[gU.length-1][1].toFixed(9);
+// 	var TCVU = document.getElementById('tcvu');
+// 	TCVU.textContent = gU[gU.length-1][1].toFixed(9);
 	brr("#svg07",gU);
 }
 function chart8(gE)
 {
 //for the ETH Volume chart
-	var TCVE = document.getElementById('tcve');
-	TCVE.textContent = gE[gE.length-1][1].toFixed(9);
+// 	var TCVE = document.getElementById('tcve');
+// 	TCVE.textContent = gE[gE.length-1][1].toFixed(9);
 	brr("#svg08",gE);
 }
 function brr(b,data) {
@@ -894,10 +906,16 @@ ec.onload = function()
     var eo=JSON.parse(this.response);
     noc(eo.result);
 }
+cg.onload = function()
+{
+    var md=JSON.parse(this.response);
+    lmd(md["coil-crypto"]);
+}
 eg.send();
 ug.send();
 er.send();
 ec.send();
+cg.send();
   var ss0 = document.getElementById("logt");
   var ss1 = document.getElementById("c1");
   var ss2 = document.getElementById("c2");
@@ -1024,6 +1042,39 @@ function fn02() {
     ss6.style.display="none";
     ss7.style.display="none";
     ss8.style.display="none";
+}
+function lmd(m)
+{
+    //v0.0.308
+	var TCMPU = document.getElementById('tcmpu');
+	TCMPU.textContent = (m.usd).toFixed(9);
+	
+	var TCPUN = document.getElementById('tcpun');
+	TCPUN.textContent = (m.eth).toFixed(9);
+	
+	var TCMCU = document.getElementById('tcmcu');
+	TCMCU.textContent = (m.usd_market_cap).toFixed(9);
+	
+	var TCMCE = document.getElementById('tcmce');
+	TCMCE.textContent = (m.eth_market_cap).toFixed(9);
+	
+	var TCVU = document.getElementById('tcvu');
+	TCVU.textContent = (m.usd_24h_vol).toFixed(9);
+	
+	var TCVE = document.getElementById('tcve');
+	TCVE.textContent = (m.eth_24h_vol).toFixed(9);
+	
+	var TCMCB = document.getElementById('tcmcb');
+	TCMCB.textContent = (m.btc_market_cap).toFixed(9);
+	
+	var TCMCUC = document.getElementById('tcmcuc');
+	TCMCUC.textContent = (m.usd_24h_change).toFixed(3);
+	
+	var TCMCEC = document.getElementById('tcmcec');
+	TCMCEC.textContent = (m.eth_24h_change).toFixed(3);
+	
+	var TCMCBC = document.getElementById('tcmcbc');
+	TCMCBC.textContent = (m.btc_24h_change).toFixed(3);
 }
 function S(s)
 {
