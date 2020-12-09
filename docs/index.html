@@ -57,7 +57,7 @@ $COIL:
 <script src="d3.v4.min.js"></script>
 <body>
 <div align="right"><label for="check" class="footr"><font color="#0cc" id="flilab" size=3>⚀⚁⚂⚃⚄⚅ Switch theme</font></label><input onchange="S(t+=1)" type="checkbox" id="check"/></div>
-  <h1 class="footr">✨ (((rebtra : v0.0.324)))</h1><br>
+  <h1 class="footr">✨ (((rebtra : v0.0.325)))</h1><br>
   <h3 class="navi"><a href="https://CoilCrypto.com">CoilCrypto.com</a> <a href="https://spring.CoilCrypto.com">Spring</a> <a href="https://spring2.CoilCrypto.com">SpringV2</a> <a href="#io" onclick="fn02()">History</a> <a href="#io" onclick="mf01('prusd')">Charts</a> <a href="https://dashboard.CoilCrypto.com/wall">Wall</a></h3><br>
 <!--This stylesheet is under a copyright by itsN1X.
 © 2020 itsN1X | E. X. Information Technologies | 9Xo.github.io-->
@@ -114,6 +114,12 @@ input[type="checkbox"] {
   border-radius: 20px;
   box-shadow: -1px 2px 1px 1px rgba(0,222,222,1);
 }
+#io div:nth-child(1),#io div:nth-child(4){
+  visibility:collapse;
+}
+#qp div:nth-child(1),#qp div:nth-child(4),#qp div:nth-child(5),#qp div:nth-child(7){
+  visibility:collapse;
+}
 @media only screen and (min-width: 641px){
   .parent {
     float: left;
@@ -124,6 +130,14 @@ input[type="checkbox"] {
   .col-q2 {
     float: left;
   }
+  #qp,#io {
+  display: grid;
+  grid-template-columns: auto auto auto auto;
+}
+#qp div:nth-last-child(2) {
+  grid-column-start: 2;
+  grid-column-end: 4;
+}
 }
 .tls{
   background-color: #555;
@@ -320,31 +334,27 @@ svg {
 }
 #tla{padding:1vw}
 </style>
-<table align="center">
-	<tr>
-		<td width="50%" align="center">
+<div class="parent" id="qp">
+			<div align="center" class="col-q3">
+			</div>
 			<div align="center" class="col-q3">
 				<font size="7" id="fcpu">$-.--</font><br>Current Price
 			</div>
-  		</td>
-  			<td width="50%" align="center">
-	  			<div class="col-q3">
-		  			<font size="7" id="ftpu">$1.011</font><br>Target Price
-	  			</div>
-		</td>
-	</tr>
-	<tr align="center">
-		<td colspan="2" align="center">
-	  			<div class="col-q3">
-		  			Next Base Scheduled
-		  			<br>In
-		  			<font id="fnbt" size="7">1337m..maybe</font>
-		  			<br>
+	  		<div align="center" class="col-q3">
+		  		<font size="7" id="ftpu">$1.011</font><br>Target Price
+	  		</div>
+			<div align="center" class="col-q3">
+			</div>
+			<div align="center" class="col-q3">
+			</div>
+				<div align="center" class="col-q3">
+					<font id="fnbt" size="7">1337m..maybe</font>
+					<br>Next Expected Base<br>
 		  			<font id="fnbd">This is just a verilong date string placeholder</font>
-	  			</div>
-		</td>
-	</tr>
-</table>
+				</div>
+			<div align="center" class="col-q3">hm
+			</div>
+			</div>
 <details><summary><h4 align="center">
 <font class="tlb" id="tla">VIEW MORE STATISTICS</font>
 </h4></summary>
@@ -446,16 +456,12 @@ svg {
 </div>
 </details>
 <div class="parent" id="io">
-<table align="center">
-<tr>
-<td width="30%" align="center">
+<div align="center" class="col-q3"></div>
 <div align="center" class="col-q3">
   <font size="5">Track bases</font><br>
   <button id="thb" class="tlb" onclick="fn02()" width="auto" role="button">View history</button>
   </div>
-  </td>
-  <td width="30%" align="center">
-  <div class="col-q3">
+  <div class="col-q3" align="center">
   <font size="5">View a chart</font><br>
   <select class="tls" name="chartdecoil" id="ccid" onchange="mf01(this.value)">
   <optgroup label="Supply">
@@ -476,7 +482,7 @@ svg {
   </optgroup>
 </select>
 </div>
-</td></tr></table>
+<div align="center" class="col-q3"></div>
 </div>
 <div class="parent" id="logt">
   <div class="column main">
@@ -592,7 +598,7 @@ svg {
 	</div>
 </div>
 ✨
-<h1 class="footr">rebtra <i>v0.0.324</i></h1><h2 class="footr">CoilCrypto.com<hr>
+<h1 class="footr">rebtra <i>v0.0.325</i></h1><h2 class="footr">CoilCrypto.com<hr>
 <!--9Xo is a public unit of E.X. (I) Technologies-->
 <div align="right"><font size="3">@
 <i><a style="color:gold;background-color:purple;text-decoration-line: none;" href="https://github.com/itsN1X">i t s <b>N1</b>X # 2 5 5 1</a><br>++♥;</i></font></div>
@@ -779,7 +785,7 @@ function mfcs(smh) {
 	interact, view or download our
 	Softwares/product/Information.
 
-© rebtra: v0.0.324
+© rebtra: v0.0.325
 Coil Crypto Rebase Tracer Tracker
 
 To contact me, do write at these :
@@ -867,7 +873,7 @@ function chart8(gE)
 function brr(b,data) {
 var svg = d3.select(b)
             .attr("viewBox",`0 0 ${innerWidth-3} ${innerHeight}`),
-    margin = {top: 50, right: 36, bottom: 30, left: 72},
+    margin = {top: 50, right: 36, bottom: 48, left: 72},
     width = innerWidth - margin.left - margin.right,
     height = innerHeight - margin.top - margin.bottom;
 var parseTime = d3.timeParse("%Q"),
@@ -884,7 +890,12 @@ var g = svg.append("g")
     g.append("g")
         .attr("class", "axis axis--x")
         .attr("transform", "translate(0," + height + ")")
-        .call(d3.axisBottom(x));
+        .call(d3.axisBottom(x))
+        .selectAll("text")
+            .style("text-anchor", "end")
+            .attr("dx", "-.8em")
+            .attr("dy", ".15em")
+            .attr("transform", "rotate(-45)" );
     g.append("g")
         .attr("class", "axis axis--y")
         .call(d3.axisLeft(y).ticks(6).tickFormat(function(d) { return parseFloat(d); }))
