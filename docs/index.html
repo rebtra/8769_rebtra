@@ -353,7 +353,7 @@ svg {
 			<div align="center" class="col-q3">
 			</div>
 				<div align="center" class="col-q3">
-					<font id="fnbt" size="7">1337m..maybe</font>
+					<font id="fnbt" size="7">1337m.. ..maybe</font>
 					<br><span id='fnbl'>Next Expected Base</span><br>
 		  			<font id="fnbd">The time will come soon, within 8.28 million ms</font>
 				</div>
@@ -613,6 +613,7 @@ for(let j=0;j<t;j++){S(j);}
 FNBD=document.getElementById("fnbd");
 FNBT=document.getElementById("fnbt");
 FNBL=document.getElementById("fnbl");
+FCD=document.getElementById("fcd");
 ND=document.getElementById("nd");
 NT=document.getElementById("nt");
 TS=document.getElementById("ts");
@@ -675,7 +676,7 @@ oo=new Date(Date.now()-tt);
 b1=new Date(parseInt(0x5f3aefd9)*1e3);
 bn=new Date(82800000-((Date.now()-b1)%82800000));
 //window size: 15*60=900(*1e3)
-//if bn over (23hrs-9e5ms)
+//if bn over (23hrs-9e5ms) === > 22h45m
 if(bn>(82800000-900000))
 {
 	NT.innerHTML	=`a moment!`;
@@ -686,12 +687,22 @@ if(bn>(82800000-900000))
 }
 else
 {
-    var vdc=new Date(Date.now()+bn.getTime());
-    ND.textContent=vdc;
-    FNBD.textContent=vdc;
-    var vtc= bn.getUTCHours()+"h "+bn.getUTCMinutes()+"m "+bn.getUTCSeconds()+"s";
-    NT.textContent=vtc;
-    FNBT.textContent=vtc
+	var vdc=new Date(Date.now()+bn.getTime());
+	ND.textContent=vdc;
+	FNBD.textContent=vdc;
+	var fcdt = vdc.getTime();
+	var x = setInterval(function()
+	{
+		var fcdg = fcdt - (new Date().getTime());
+		fcdcd = Math.floor((fcdg%(86400000))/3600000)+"h "+Math.floor((fcdg%(3600000))/60000)+"m "+Math.floor((fcdg%(60000))/1000)+"s";
+		NT.textContent=fcdcd;
+		FNBT.textContent=fcdcd;
+		if (fcdg < 0)
+		{
+			clearInterval(x);
+			window.location.reload(true);
+		}
+	}, 1000);
 }
 TS.textContent=(Math.trunc(parseInt(xD[xD.length-1].data)/1e9)).toLocaleString();
 LD.textContent=new Date(tt);
