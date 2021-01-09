@@ -33,7 +33,7 @@
 <title>COIL : rebtra Dashboard</title>
 <link rel="shortcut icon" href="data:image/svg+xml;base64,PHN2ZyB2aWV3Qm94PSIwIDAgMTAgMTAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CiAgPHBhdGggZD0iTTEsMSBoMCIgc3Ryb2tlPSIjMDBlNmE4IiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS13aWR0aD0iMiIvPgogIDxwb2x5bGluZSBzdHJva2U9IiMwMGU2YTgiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLXdpZHRoPSIyIiBwb2ludHM9IjEsMy42NjY3IDksMSIvPgogIDxwb2x5bGluZSBzdHJva2U9IiMwMGU2YTgiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLXdpZHRoPSIyIiBwb2ludHM9IjEsNi4zMzM0IDksMy42NjY3Ii8+CiAgPHBvbHlsaW5lIHN0cm9rZT0iIzAwZTZhOCIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2Utd2lkdGg9IjIiIHBvaW50cz0iMSw5IDksNi4zMzM0Ii8+ICAKICA8cGF0aCBkPSJNOSw5IGgwIiBzdHJva2U9IiMwMGU2YTgiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLXdpZHRoPSIyIi8+Cjwvc3ZnPgo=" />
 <!--
-© rebtra: v0.0.353
+© rebtra: v0.0.355
 Coil Crypto Rebase Tracer Tracker
 
 To contact me, do write at these :
@@ -97,10 +97,6 @@ input[type="checkbox"] {
   width: 100%;
   padding: 20px 0;
   color: #deb;
-//  background-image: linear-gradient(to bottom, rgba(0,55,55,1), rgba(0,99,99,1));
-}
-.column {
-//  padding: 10px;
 }
 .main {
   background: #222;
@@ -160,7 +156,6 @@ input[type="checkbox"] {
 	.p1 {
 	display: grid;
 	grid-template-columns: auto auto auto;
-	margin: 20;
 	}
 	.p2 {
 	display: grid;
@@ -309,13 +304,13 @@ color:#321;
 .axis line {
   fill: none;
   stroke: #1aa;
-  stroke-width: 0.2vw;
+//  stroke-width: 0.2vw;
   shape-rendering: crispEdges;
 }
 .axis text {
   fill: #1aa;
   stroke: #1aa;
-  stroke-width: 0.1vw;
+//  font-size: 2em;
   shape-rendering: crispEdges;
 }
 .line {
@@ -465,11 +460,6 @@ float:left
 				<div class="column main">
 					<h4 align="center">Historical Supply Curve</h4>
 					<svg id="svg01">
-					<linearGradient id="mg1" y1="0%" x1="50%" x2="50%" y2="100%">
-					<stop offset="0%" style="stop-color:rgb(0,255,255);stop-opacity:0.1"></stop>
-					<stop style="stop-color:rgb(0,255,127);stop-opacity:0" offset="100%"></stop>
-					</linearGradient>
-					<polyline id="polyline-id" points="" style="fill:url(#mg1);stroke:#00e6a8;stroke-width:0.1"></polyline>
 					</svg>
 				</div>
 			</div>
@@ -485,11 +475,6 @@ float:left
 			<div class="parent" id="c2">
 				<div class="column sidebar"><h4 align="center">Relative Supply Change (%)</h4>
 					<svg id="svg02">
-					<linearGradient id="mg2" x1="50%" y1="0%" x2="50%" y2="100%">
-					<stop offset="0%" style="stop-color:rgb(0,255,255);stop-opacity:0.1"></stop>
-					<stop style="stop-color:rgb(0,255,127);stop-opacity:0" offset="80%"></stop>
-					</linearGradient>
-					<polyline id="polyline-id2" style="fill:url(#mg2);stroke:#00e6a8;stroke-width:0.1" points=""></polyline>
 					</svg>
 				</div>
 			</div>
@@ -541,33 +526,18 @@ float:left
 			<div class="parent" id="c5">
 				<div class="column main"><h4 align="center">USD Market Capitalization ($) - Today</h4>
 					<svg id="svg05d1">
-					<linearGradient id="mg5" x1="50%" y1="0%" x2="50%" y2="100%">
-					<stop offset="0%" style="stop-color:rgb(0,255,255);stop-opacity:0.1"></stop>
-					<stop style="stop-color:rgb(0,255,127);stop-opacity:0" offset="80%"></stop>
-					</linearGradient>
-					<polyline id="polyline-id5" style="fill:url(#mg5);stroke:#00e6a8;stroke-width:0.1" points=""></polyline>
 					</svg>
 				</div>
 			</div>
 			<div class="parent" id="c5">
 				<div class="column main"><h4 align="center">USD Market Capitalization ($) - Last 31 Days</h4>
 					<svg id="svg05d31">
-					<linearGradient id="mg5" x1="50%" y1="0%" x2="50%" y2="100%">
-					<stop offset="0%" style="stop-color:rgb(0,255,255);stop-opacity:0.1"></stop>
-					<stop style="stop-color:rgb(0,255,127);stop-opacity:0" offset="80%"></stop>
-					</linearGradient>
-					<polyline id="polyline-id5" style="fill:url(#mg5);stroke:#00e6a8;stroke-width:0.1" points=""></polyline>
 					</svg>
 				</div>
 			</div>
 			<div class="parent" id="c5">
 				<div class="column main"><h4 align="center">USD Market Capitalization ($) - All-Time</h4>
 					<svg id="svg05">
-					<linearGradient id="mg5" x1="50%" y1="0%" x2="50%" y2="100%">
-					<stop offset="0%" style="stop-color:rgb(0,255,255);stop-opacity:0.1"></stop>
-					<stop style="stop-color:rgb(0,255,127);stop-opacity:0" offset="80%"></stop>
-					</linearGradient>
-					<polyline id="polyline-id5" style="fill:url(#mg5);stroke:#00e6a8;stroke-width:0.1" points=""></polyline>
 					</svg>
 				</div>
 			</div>
@@ -583,33 +553,18 @@ float:left
 			<div class="parent" id="c6">
 				<div class="column sidebar"><h4 align="center">ETH Market Capitalization (Ξ) - Today</h4>
 					<svg id="svg06d1">
-					<linearGradient id="mg6" x1="50%" y1="0%" x2="50%" y2="100%">
-					<stop offset="0%" style="stop-color:rgb(0,255,255);stop-opacity:0.1"></stop>
-					<stop style="stop-color:rgb(0,255,127);stop-opacity:0" offset="80%"></stop>
-					</linearGradient>
-					<polyline id="polyline-id6" style="fill:url(#mg6);stroke:#00e6a8;stroke-width:0.1" points=""></polyline>
 					</svg>
 				</div>
 			</div>
 			<div class="parent" id="c6">
 				<div class="column sidebar"><h4 align="center">ETH Market Capitalization (Ξ) - Last 31 Days</h4>
 					<svg id="svg06d31">
-					<linearGradient id="mg6" x1="50%" y1="0%" x2="50%" y2="100%">
-					<stop offset="0%" style="stop-color:rgb(0,255,255);stop-opacity:0.1"></stop>
-					<stop style="stop-color:rgb(0,255,127);stop-opacity:0" offset="80%"></stop>
-					</linearGradient>
-					<polyline id="polyline-id6" style="fill:url(#mg6);stroke:#00e6a8;stroke-width:0.1" points=""></polyline>
 					</svg>
 				</div>
 			</div>
 			<div class="parent" id="c6">
 				<div class="column sidebar"><h4 align="center">ETH Market Capitalization (Ξ) - All-Time</h4>
 					<svg id="svg06">
-					<linearGradient id="mg6" x1="50%" y1="0%" x2="50%" y2="100%">
-					<stop offset="0%" style="stop-color:rgb(0,255,255);stop-opacity:0.1"></stop>
-					<stop style="stop-color:rgb(0,255,127);stop-opacity:0" offset="80%"></stop>
-					</linearGradient>
-					<polyline id="polyline-id6" style="fill:url(#mg6);stroke:#00e6a8;stroke-width:0.1" points=""></polyline>
 					</svg>
 				</div>
 			</div>
@@ -700,33 +655,18 @@ float:left
 			<div class="parent" id="c3d1">
 				<div class="column main"><h4 align="center">Price in USD ($) : Today</h4>
 					<svg id="svg03d1">
-					<linearGradient id="mg3" x1="50%" y1="0%" x2="50%" y2="100%">
-					<stop offset="0%" style="stop-color:rgb(0,255,255);stop-opacity:0.1"></stop>
-					<stop style="stop-color:rgb(0,255,127);stop-opacity:0" offset="80%"></stop>
-					</linearGradient>
-					<polyline id="polyline-id3" style="fill:url(#mg3);stroke:#00e6a8;stroke-width:0.1" points=""></polyline>
 					</svg>
 				</div>
 			</div>
 			<div class="parent" id="c3d31">
 				<div class="column main"><h4 align="center">Price in USD ($) : Last 31 days</h4>
 					<svg id="svg03d31">
-					<linearGradient id="mg3" x1="50%" y1="0%" x2="50%" y2="100%">
-					<stop offset="0%" style="stop-color:rgb(0,255,255);stop-opacity:0.1"></stop>
-					<stop style="stop-color:rgb(0,255,127);stop-opacity:0" offset="80%"></stop>
-					</linearGradient>
-					<polyline id="polyline-id3" style="fill:url(#mg3);stroke:#00e6a8;stroke-width:0.1" points=""></polyline>
 					</svg>
 				</div>
 			</div>
 			<div class="parent" id="c3">
 				<div class="column main"><h4 align="center">Price in USD ($) : All-Time</h4>
 					<svg id="svg03">
-					<linearGradient id="mg3" x1="50%" y1="0%" x2="50%" y2="100%">
-					<stop offset="0%" style="stop-color:rgb(0,255,255);stop-opacity:0.1"></stop>
-					<stop style="stop-color:rgb(0,255,127);stop-opacity:0" offset="80%"></stop>
-					</linearGradient>
-					<polyline id="polyline-id3" style="fill:url(#mg3);stroke:#00e6a8;stroke-width:0.1" points=""></polyline>
 					</svg>
 				</div>
 			</div>
@@ -743,33 +683,18 @@ float:left
 			<div class="parent" id="c4">
 				<div class="column sidebar"><h4 align="center">Price in ETH (Ξ) - Today</h4>
 					<svg id="svg04d1">
-					<linearGradient id="mg4" x1="50%" y1="0%" x2="50%" y2="100%">
-					<stop offset="0%" style="stop-color:rgb(0,255,255);stop-opacity:0.1"></stop>
-					<stop style="stop-color:rgb(0,255,127);stop-opacity:0" offset="80%"></stop>
-					</linearGradient>
-					<polyline id="polyline-id4" style="fill:url(#mg4);stroke:#00e6a8;stroke-width:0.1" points=""></polyline>
 					</svg>
 				</div>
 			</div>
 			<div class="parent" id="c4">
 				<div class="column sidebar"><h4 align="center">Price in ETH (Ξ) - Last 31 days</h4>
 					<svg id="svg04d31">
-					<linearGradient id="mg4" x1="50%" y1="0%" x2="50%" y2="100%">
-					<stop offset="0%" style="stop-color:rgb(0,255,255);stop-opacity:0.1"></stop>
-					<stop style="stop-color:rgb(0,255,127);stop-opacity:0" offset="80%"></stop>
-					</linearGradient>
-					<polyline id="polyline-id4" style="fill:url(#mg4);stroke:#00e6a8;stroke-width:0.1" points=""></polyline>
 					</svg>
 				</div>
 			</div>
 			<div class="parent" id="c4">
 				<div class="column sidebar"><h4 align="center">Price in ETH (Ξ) - All-Time</h4>
 					<svg id="svg04">
-					<linearGradient id="mg4" x1="50%" y1="0%" x2="50%" y2="100%">
-					<stop offset="0%" style="stop-color:rgb(0,255,255);stop-opacity:0.1"></stop>
-					<stop style="stop-color:rgb(0,255,127);stop-opacity:0" offset="80%"></stop>
-					</linearGradient>
-					<polyline id="polyline-id4" style="fill:url(#mg4);stroke:#00e6a8;stroke-width:0.1" points=""></polyline>
 					</svg>
 				</div>
 			</div>
@@ -879,33 +804,18 @@ float:left
 			<div class="parent" id="c7">
 				<div class="column main"><h4 align="center">USD Trade Volumes ($) - Today</h4>
 					<svg id="svg07d1">
-					<linearGradient id="mg7" x1="50%" y1="0%" x2="50%" y2="100%">
-					<stop offset="0%" style="stop-color:rgb(0,255,255);stop-opacity:0.1"></stop>
-					<stop style="stop-color:rgb(0,255,127);stop-opacity:0" offset="80%"></stop>
-					</linearGradient>
-					<polyline id="polyline-id7" style="fill:url(#mg7);stroke:#00e6a8;stroke-width:0.1" points=""></polyline>
 					</svg>
 				</div>
 			</div>
 			<div class="parent" id="c7">
 				<div class="column main"><h4 align="center">USD Trade Volumes ($) - Last 31 days</h4>
 					<svg id="svg07d31">
-					<linearGradient id="mg7" x1="50%" y1="0%" x2="50%" y2="100%">
-					<stop offset="0%" style="stop-color:rgb(0,255,255);stop-opacity:0.1"></stop>
-					<stop style="stop-color:rgb(0,255,127);stop-opacity:0" offset="80%"></stop>
-					</linearGradient>
-					<polyline id="polyline-id7" style="fill:url(#mg7);stroke:#00e6a8;stroke-width:0.1" points=""></polyline>
 					</svg>
 				</div>
 			</div>
 			<div class="parent" id="c7">
 				<div class="column main"><h4 align="center">USD Trade Volumes ($) - All-Time</h4>
 					<svg id="svg07">
-					<linearGradient id="mg7" x1="50%" y1="0%" x2="50%" y2="100%">
-					<stop offset="0%" style="stop-color:rgb(0,255,255);stop-opacity:0.1"></stop>
-					<stop style="stop-color:rgb(0,255,127);stop-opacity:0" offset="80%"></stop>
-					</linearGradient>
-					<polyline id="polyline-id7" style="fill:url(#mg7);stroke:#00e6a8;stroke-width:0.1" points=""></polyline>
 					</svg>
 				</div>
 			</div>
@@ -921,33 +831,18 @@ float:left
 			<div class="parent" id="c8">
 				<div class="column sidebar"><h4 align="center">ETH Trade Volumes (Ξ) - Today</h4>
 					<svg id="svg08d1">
-					<linearGradient id="mg8" x1="50%" y1="0%" x2="50%" y2="100%">
-					<stop offset="0%" style="stop-color:rgb(0,255,255);stop-opacity:0.1"></stop>
-					<stop style="stop-color:rgb(0,255,127);stop-opacity:0" offset="80%"></stop>
-					</linearGradient>
-					<polyline id="polyline-id8" style="fill:url(#mg8);stroke:#00e6a8;stroke-width:0.1" points=""></polyline>
 					</svg>
 				</div>
 			</div>
 			<div class="parent" id="c8">
 				<div class="column sidebar"><h4 align="center">ETH Trade Volumes (Ξ) - Last 31 Days</h4>
 					<svg id="svg08d31">
-					<linearGradient id="mg8" x1="50%" y1="0%" x2="50%" y2="100%">
-					<stop offset="0%" style="stop-color:rgb(0,255,255);stop-opacity:0.1"></stop>
-					<stop style="stop-color:rgb(0,255,127);stop-opacity:0" offset="80%"></stop>
-					</linearGradient>
-					<polyline id="polyline-id8" style="fill:url(#mg8);stroke:#00e6a8;stroke-width:0.1" points=""></polyline>
 					</svg>
 				</div>
 			</div>
 			<div class="parent" id="c8">
 				<div class="column sidebar"><h4 align="center">ETH Trade Volumes (Ξ) - All-time</h4>
 					<svg id="svg08">
-					<linearGradient id="mg8" x1="50%" y1="0%" x2="50%" y2="100%">
-					<stop offset="0%" style="stop-color:rgb(0,255,255);stop-opacity:0.1"></stop>
-					<stop style="stop-color:rgb(0,255,127);stop-opacity:0" offset="80%"></stop>
-					</linearGradient>
-					<polyline id="polyline-id8" style="fill:url(#mg8);stroke:#00e6a8;stroke-width:0.1" points=""></polyline>
 					</svg>
 				</div>
 			</div>
@@ -992,7 +887,7 @@ float:left
 </details>
 </div>
 <br>
-<h1 class="footr" align="right">rebtra <i>v0.0.353</i></h1>
+<h1 class="footr" align="right">rebtra <i>v0.0.355</i></h1>
 <h2><!--9Xo is a public unit of E.X. (I) Technologies-->
 <div align="right"><font size="3">@
 <i><a style="color:gold;background-color:purple;text-decoration-line: none;" href="https://t.me/itsN1X">its<b>N1</b>X #2551</a><br>++♥;</i></font></div>
@@ -1017,8 +912,8 @@ float:left
 <h4 class="navi foozi">
 <font size="5"><a href="#links">Traces</a></font><br>
 <a href="https://dashboard.coilcrypto.com">rebtra (COIL Dashboard)</a><br>
-<a href="https://spring2.CoilCrypto.com">splatr (AQUA Tracker)</a><br>
-<a href="https://spring.CoilCrypto.com">Wall of Shame (SpringV1)</a>
+<a href="#links" onclick="alert('splatr is currently under development, please check back later to find the splatters!')">splatr (AQUA Tracker)</a><br>
+<a href="https://dashboard.CoilCrypto.com/wall">Wall of Shame (SpringV1)</a>
 </h4>
 <h4 class="navi foozi">
 <font size="5"><a href="#links">EtherScan</a></font><br>
@@ -1067,7 +962,7 @@ float:left
 <a href="https://t.me/CoilCrypto">Telegram</a>
 <a href="https://t.me/CoilCrypto_ann">Channel</a>
 </h4>
-<svg style="none" height="32vw" height="32vw" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
+<svg height="32vw" height="32vw" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
   <path d="M4,4 h0" stroke="#00e6a8" stroke-linecap="round" stroke-width="2"/>
   <polyline stroke="#00e6a8" stroke-linecap="round" stroke-width="2" points="4,6.6667 12,4"/>
   <polyline stroke="#00e6a8" stroke-linecap="round" stroke-width="2" points="4,9.3334 12,6.6667"/>
@@ -1249,10 +1144,7 @@ function chart2(cD)
 	TCLCP.textContent = lcp?lcp.toFixed(9):"Zero";
     brr("#svg02",qlist);
 }
-function mfcs(smh) {
-	var TCCCS = document.getElementById('tcccs');
-	TCCCS.textContent = Math.trunc(smh.market_caps[smh.market_caps.length-1][1]/smh.prices[smh.prices.length-1][1]).toLocaleString();
-	        console.log(`
+console.log(`
 :       Written by @itsN1X on day 8769
 	@github.com/itsN1X/8769_rebtra
 	To tip me or to donate, visit:
@@ -1282,7 +1174,7 @@ function mfcs(smh) {
 	interact, view or download our
 	Softwares/product/Information.
 
-© rebtra: v0.0.353
+© rebtra: v0.0.355
 Coil Crypto Rebase Tracer Tracker
 
 D░░░░░░░░▄░░░░░░░░ ░░░░░▄░░░░
@@ -1327,6 +1219,9 @@ GUNS36xAq9Kzr8ehDiTnAVH94Rai34SHDC
 With ++♡;
 @itsN1X
 `)
+function mfcs(smh) {
+	var TCCCS = document.getElementById('tcccs');
+	TCCCS.textContent = Math.trunc(smh.market_caps[smh.market_caps.length-1][1]/smh.prices[smh.prices.length-1][1]).toLocaleString();
 }
 function chart3(gU)
 {
@@ -1421,10 +1316,10 @@ function chart8d1(gE)
 }
 function brr(b,data) {
 var svg = d3.select(b)
-            .attr("viewBox",`0 0 ${innerWidth-3} ${innerHeight}`),
+    .attr("viewBox",`0 0 ${innerWidth-3} ${innerHeight}`),
     margin = {top: 50, right: 36, bottom: 48, left: 72},
     width = innerWidth - margin.left - margin.right,
-    height = innerHeight - margin.top - margin.bottom;
+    height = innerHeight*0.9 - margin.top - margin.bottom;
 var parseTime = d3.timeParse("%Q"),
     bisectDate = d3.bisector(function(d) { return d[0]; }).left;
 var x = d3.scaleTime().range([0, width]);
@@ -1439,12 +1334,12 @@ var g = svg.append("g")
     g.append("g")
         .attr("class", "axis axis--x")
         .attr("transform", "translate(0," + height + ")")
-        .call(d3.axisBottom(x))
+        .call(d3.axisBottom(x).ticks(6))
         .selectAll("text")
             .style("text-anchor", "end")
-            .attr("dx", "-.8em")
-            .attr("dy", ".15em")
-            .attr("transform", "rotate(-45)" );
+//            .attr("dx", "-.8em")
+//            .attr("dy", ".15em")
+            .attr("transform", "rotate(-20)");
     g.append("g")
         .attr("class", "axis axis--y")
         .call(d3.axisLeft(y).ticks(6).tickFormat(function(d) { return parseFloat(d); }))
@@ -1479,7 +1374,7 @@ var g = svg.append("g")
           d1 = data[i],
           d = x0 - d0[0] > d1[0] - x0 ? d1 : d0;
       focus.attr("transform", "translate(" + x(d[0]) + "," + y(d[1]) + ")");
-      focus.select("text").text(function() { return d[1]; });
+      focus.select("text").text(function() { return d[1]+"\n(at "+(new Date(d[0])).toLocaleString()+")"; });
       focus.select(".x-hover-line").attr("y2", height - y(d[1]));
       focus.select(".y-hover-line").attr("x2", width + width);
     }
