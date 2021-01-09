@@ -33,7 +33,7 @@
 <title>COIL : rebtra Dashboard</title>
 <link rel="shortcut icon" href="data:image/svg+xml;base64,PHN2ZyB2aWV3Qm94PSIwIDAgMTAgMTAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CiAgPHBhdGggZD0iTTEsMSBoMCIgc3Ryb2tlPSIjMDBlNmE4IiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS13aWR0aD0iMiIvPgogIDxwb2x5bGluZSBzdHJva2U9IiMwMGU2YTgiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLXdpZHRoPSIyIiBwb2ludHM9IjEsMy42NjY3IDksMSIvPgogIDxwb2x5bGluZSBzdHJva2U9IiMwMGU2YTgiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLXdpZHRoPSIyIiBwb2ludHM9IjEsNi4zMzM0IDksMy42NjY3Ii8+CiAgPHBvbHlsaW5lIHN0cm9rZT0iIzAwZTZhOCIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2Utd2lkdGg9IjIiIHBvaW50cz0iMSw5IDksNi4zMzM0Ii8+ICAKICA8cGF0aCBkPSJNOSw5IGgwIiBzdHJva2U9IiMwMGU2YTgiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLXdpZHRoPSIyIi8+Cjwvc3ZnPgo=" />
 <!--
-© rebtra: v0.0.352
+© rebtra: v0.0.353
 Coil Crypto Rebase Tracer Tracker
 
 To contact me, do write at these :
@@ -381,6 +381,15 @@ details > summary::-webkit-details-marker {
 .d1:hover{
   font-size: 2em;
 }
+.foozi a{
+ text-decoration-line: none;
+ color: #0ec;
+ padding:0 2vw 0 2vw;
+ line-height:2;
+}
+.foozi{
+float:left
+}
 </style>
 <div class="parent" id="qp">
 	<div align="center" class="col-q3">
@@ -409,7 +418,7 @@ details > summary::-webkit-details-marker {
 <details>
 	<summary onclick="this.firstElementChild.firstElementChild.firstElementChild.textContent=='Explore COIL'?this.firstElementChild.firstElementChild.firstElementChild.textContent='Hide metrics':this.firstElementChild.firstElementChild.firstElementChild.textContent='Explore COIL'">
 		<h4 align="center">
-		<font class="tlb tla" style="padding:8px">
+		<font class="tlb tla" style="padding:8px" size="5">
 			<span>Explore COIL</span>
 			<img src="data:image/svg+xml;base64,PHN2ZyB2aWV3Qm94PSIwIDAgMTAgMTAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CiAgPHBhdGggZD0iTTEsMSBoMCIgc3Ryb2tlPSIjMDBlNmE4IiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS13aWR0aD0iMiIvPgogIDxwb2x5bGluZSBzdHJva2U9IiMwMGU2YTgiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLXdpZHRoPSIyIiBwb2ludHM9IjEsMy42NjY3IDksMSIvPgogIDxwb2x5bGluZSBzdHJva2U9IiMwMGU2YTgiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLXdpZHRoPSIyIiBwb2ludHM9IjEsNi4zMzM0IDksMy42NjY3Ii8+CiAgPHBvbHlsaW5lIHN0cm9rZT0iIzAwZTZhOCIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2Utd2lkdGg9IjIiIHBvaW50cz0iMSw5IDksNi4zMzM0Ii8+ICAKICA8cGF0aCBkPSJNOSw5IGgwIiBzdHJva2U9IiMwMGU2YTgiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLXdpZHRoPSIyIi8+Cjwvc3ZnPgo=" width="auto" height="16px"></img>
 		</font>
@@ -955,54 +964,116 @@ details > summary::-webkit-details-marker {
 		<div align="center">‿</div>
 		</details>
 	</div>
+	<div class="met">
+		<details><summary><div align="center"><font size="5" class="d1" onclick="this.textContent=this.textContent=='+ Stakeholder's Calculator'?'╳  Stakeholder's Calculator':'+ Stakeholder's Calculator'">+ Stakeholder's Calculator</font></div></summary>
+		<br>
+		<div class="parent">
+			<h3 align="center">Stakeholder's Calculator</h3>
+			<div class="" align="center">
+			Find out your network share, worth of an account and other interesting facts.<br><br>
+				<div class="col-q2" style="float:none">
+					<br>
+					<div align="center">For COIL hodlers</div>
+					<input id="sci" style="width:73%" placeholder="'0xD9B4BEF94201F984'    or    '1337000.696906969'"></input><br><br>
+					<div align="center"><b>Enter amount of a COIL or a holder's address.</b></div>
+					<button onclick="stcach(document.getElementById('sci').value)" class="tlb">Discover</button><br><br>
+					<div align="center" id="stocal"></div>
+					<br><br>
+					<div align="center">For Liquidity Providers</div>
+					<input id="sci2" style="width:73%" placeholder="'0xD9B4BEF94201F984'    or    '1337000.696906969'"></input><br><br>
+					<div align="center"><b>Input a number of UETHCOIL or any LP's address.</b></div>
+					<button onclick="stcach2(document.getElementById('sci2').value)" class="tlb">Discover</button><br><br>
+					<div align="center" id="stocal2"></div>
+				</div>
+			</div>
+		</div>
+		</details>
+	</div>
 </details>
 </div>
 <br>
-<div class="parent">
-	<h3 align="center">Stakeholder's Calculator</h3>
-	<div class="" align="center">
-	Find out your network share, worth of an account and other interesting facts.<br><br>
-		<div class="col-q2" style="float:none">
-			<br>
-			<div align="center">For COIL hodlers</div>
-			<input id="sci" style="width:73%" placeholder="'0xD9B4BEF94201F984'    or    '1337000.696906969'"></input><br><br>
-			<div align="center"><b>Enter amount of a COIL or a holder's address.</b></div>
-			<button onclick="stcach(document.getElementById('sci').value)" class="tlb">Discover</button><br><br>
-			<div align="center" id="stocal"></div>
-			<br><br>
-			<div align="center">For Liquidity Providers</div>
-			<input id="sci2" style="width:73%" placeholder="'0xD9B4BEF94201F984'    or    '1337000.696906969'"></input><br><br>
-			<div align="center"><b>Input a number of UETHCOIL or any LP's address.</b></div>
-			<button onclick="stcach2(document.getElementById('sci2').value)" class="tlb">Discover</button><br><br>
-			<div align="center" id="stocal2"></div>
-		</div>
-	</div>
-</div>
+<h1 class="footr" align="right">rebtra <i>v0.0.353</i></h1>
+<h2><!--9Xo is a public unit of E.X. (I) Technologies-->
+<div align="right"><font size="3">@
+<i><a style="color:gold;background-color:purple;text-decoration-line: none;" href="https://t.me/itsN1X">its<b>N1</b>X #2551</a><br>++♥;</i></font></div>
+</h2>
 <br>
-✨<h3 class="navi" align="center">
-<a href="https://CoilCrypto.com">CoilCrypto.com</a>
-<a href="https://aqua.coilcrypto.com">AQUA</a>
-<a href="https://spring.CoilCrypto.com">Spring</a>
-<a href="https://spring2.CoilCrypto.com">SpringV2</a>
-<a href="https://dashboard.CoilCrypto.com/wall">Wall</a><br>
-<a href="https://app.uniswap.org/#/swap?outputCurrency=0x3936Ad01cf109a36489d93cabdA11cF062fd3d48">app.UniSwap</a>
-<a href="https://info.uniswap.org/pair/0xeaceac83cecca6beebc736edd6360d1633175b01">info.UniSwap</a>
-<a href="https://etherscan.io/token/0x3936Ad01cf109a36489d93cabdA11cF062fd3d48">EtherScan</a>
-<a href="https://www.dextools.io/app/uniswap/pair-explorer/0xeaceac83cecca6beebc736edd6360d1633175b01">DexTools</a>
-<a href="https://coingecko.com/coins/coil">CoinGecko</a>
-<a href="https://CoinMarketCap.com/currencies/coil">CoinMarketCap</a><br>
+<h4 class="navi foozi">
+<font size="5"><a href="#links">Knowledgebase</a></font><br>
+<a href="https://CoilCrypto.com/coil.php">COIL</a><br>
+<a href="https://CoilCrypto.com/rebase.php">Rebase</a><br>
+<a href="https://CoilCrypto.com/coil-spring.php">Spring</a><br>
+<a href="https://spring2.CoilCrypto.com">AQUA</a><br>
+<a href="https://CoilCrypto.com/faq.php">F.A.Q.s</a><br><!--
+<a href="https://CoilCrypto.com/teams.php">Team</a><br>-->
+<a href="https://CoilCrypto.com/contact.php">Contact</a>
+</h4>
+<h4 class="navi foozi">
+<font size="5"><a href="#links">dApps</a></font><br>
+<a href="https://spring.coilcrypto.com">Spring</a><br>
+<a href="https://spring2.CoilCrypto.com">Spring (v2)</a><br>
+<a href="https://aqua.CoilCrypto.com">AQUA</a>
+</h4>
+<h4 class="navi foozi">
+<font size="5"><a href="#links">Traces</a></font><br>
+<a href="https://dashboard.coilcrypto.com">rebtra (COIL Dashboard)</a><br>
+<a href="https://spring2.CoilCrypto.com">splatr (AQUA Tracker)</a><br>
+<a href="https://spring.CoilCrypto.com">Wall of Shame (SpringV1)</a>
+</h4>
+<h4 class="navi foozi">
+<font size="5"><a href="#links">EtherScan</a></font><br>
+<a href="https://etherscan.io/token/0x3936Ad01cf109a36489d93cabdA11cF062fd3d48">COIL</a>
+<a href="https://etherscan.io/token/0x7e32c8727cc19dd59a7a4d01b95ae1cbfc8f4c77">AQUA</a>
+</h4>
+<h4 class="navi foozi">
+<font size="5"><a href="#links">CoinGecko</a></font><br>
+<a href="https://coingecko.com/coins/coil">COIL</a>
+<a href="https://coingecko.com/coins/aqua">AQUA</a>
+</h4>
+<h4 class="navi foozi">
+<font size="5"><a href="#links">CoinMarketCap</a></font><br>
+<a href="https://coinmarketcap.com/currencies/coil">COIL</a>
+<a href="https://coinmarketcap.com/currencies/aqua">AQUA</a>
+</h4>
+<h4 class="navi foozi">
+<font size="5"><a href="#links">COIL/ETH</a></font><br>
+<a href="https://app.uniswap.org/#/swap?outputCurrency=0x3936Ad01cf109a36489d93cabdA11cF062fd3d48">Trade</a><br>
+<a href="https://app.uniswap.org/#/swap?outputCurrency=0x3936Ad01cf109a36489d93cabdA11cF062fd3d48">Pool</a><br>
+<a href="https://info.uniswap.org/pair/0xeaceac83cecca6beebc736edd6360d1633175b01">Analytics</a><br>
+<a href="https://www.dextools.io/app/uniswap/pair-explorer/0xeaceac83cecca6beebc736edd6360d1633175b01">DexTools</a><br>
+<a href="https://etherscan.io/token/0xeaceac83cecca6beebc736edd6360d1633175b01">L.P.'s Token</a>
+</h4>
+<h4 class="navi foozi">
+<font size="5"><a href="#links">COIL/AQUA</a></font><br>
+<a href="https://app.uniswap.org/#/swap?outputCurrency=0x7e32c8727cc19dd59a7a4d01b95ae1cbfc8f4c77&inputCurrency=0x3936Ad01cf109a36489d93cabdA11cF062fd3d48">Trade</a><br>
+<a href="https://app.uniswap.org/#/add/0x3936ad01cf109a36489d93cabda11cf062fd3d48/0x7e32c8727cc19dd59a7a4d01b95ae1cbfc8f4c77">Pool</a><br>
+<a href="https://info.uniswap.org/pair/0x369885e42b151dfdc9c2ba1185dc1358ccdb1339">Analytics</a><br>
+<a href="https://www.dextools.io/app/uniswap/pair-explorer/0x369885e42b151dfdc9c2ba1185dc1358ccdb1339">DexTools</a><br>
+<a href="https://etherscan.io/token/0x369885e42b151dfdc9c2ba1185dc1358ccdb1339">L.P.'s Token</a>
+</h4>
+<h4 class="navi foozi">
+<font size="5"><a href="#links">AQUA/ETH</a></font><br>
+<a href="https://app.uniswap.org/#/swap?outputCurrency=0x7e32c8727cc19dd59a7a4d01b95ae1cbfc8f4c77&inputCurrency=ETH">Trade</a><br>
+<a href="https://app.uniswap.org/add/0x7e32c8727cc19dd59a7a4d01b95ae1cbfc8f4c77/ETH">Pool</a><br>
+<a href="https://info.uniswap.org/pair/0x8214018542bc5c582dcaa1c9118fcf00d7040f38">Analytics</a><br>
+<a href="https://www.dextools.io/app/uniswap/pair-explorer/0x8214018542bc5c582dcaa1c9118fcf00d7040f38">DexTools</a><br>
+<a href="https://etherscan.io/token/0x8214018542bc5c582dcaa1c9118fcf00d7040f38">L.P.'s Token</a>
+</h4>
+<h4 class="navi foozi">
+<font size="5"><a href="#links">Social Media</a></font><br>
 <a href="https://coilcrypto.medium.com">Medium</a>
 <a href="https://twitter.com/CoilCrypto">Twitter</a>
 <a href="https://discord.gg/q78SjP">Discord</a>
 <a href="https://t.me/CoilCrypto">Telegram</a>
 <a href="https://t.me/CoilCrypto_ann">Channel</a>
-</h3>
-<br>
-<h1 class="footr" align="right">rebtra <i>v0.0.352</i></h1>
-<h2><!--9Xo is a public unit of E.X. (I) Technologies-->
-<div align="right"><font size="3">@
-<i><a style="color:gold;background-color:purple;text-decoration-line: none;" href="https://github.com/itsN1X">its<b>N1</b>X #2551</a><br>++♥;</i></font></div>
-</h2>
+</h4>
+<svg style="none" height="32vw" height="32vw" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
+  <path d="M4,4 h0" stroke="#00e6a8" stroke-linecap="round" stroke-width="2"/>
+  <polyline stroke="#00e6a8" stroke-linecap="round" stroke-width="2" points="4,6.6667 12,4"/>
+  <polyline stroke="#00e6a8" stroke-linecap="round" stroke-width="2" points="4,9.3334 12,6.6667"/>
+  <polyline stroke="#00e6a8" stroke-linecap="round" stroke-width="2" points="4,12 12,9.3334"/>
+  <path d="M12,12 h0" stroke="#00e6a8" stroke-linecap="round" stroke-width="2"/>
+</svg>
 <script src="d3.v4.min.js"></script>
 <script>var t=(Math.trunc(Date.now()/1000))%9;
 for(let j=0;j<t;j++){S(j);}
@@ -1211,7 +1282,7 @@ function mfcs(smh) {
 	interact, view or download our
 	Softwares/product/Information.
 
-© rebtra: v0.0.352
+© rebtra: v0.0.353
 Coil Crypto Rebase Tracer Tracker
 
 D░░░░░░░░▄░░░░░░░░ ░░░░░▄░░░░
