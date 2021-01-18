@@ -33,7 +33,7 @@
 <title>COIL : rebtra Dashboard</title>
 <link rel="shortcut icon" href="data:image/svg+xml;base64,PHN2ZyB2aWV3Qm94PSIwIDAgMTAgMTAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CiAgPHBhdGggZD0iTTEsMSBoMCIgc3Ryb2tlPSIjMDBlNmE4IiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS13aWR0aD0iMiIvPgogIDxwb2x5bGluZSBzdHJva2U9IiMwMGU2YTgiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLXdpZHRoPSIyIiBwb2ludHM9IjEsMy42NjY3IDksMSIvPgogIDxwb2x5bGluZSBzdHJva2U9IiMwMGU2YTgiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLXdpZHRoPSIyIiBwb2ludHM9IjEsNi4zMzM0IDksMy42NjY3Ii8+CiAgPHBvbHlsaW5lIHN0cm9rZT0iIzAwZTZhOCIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2Utd2lkdGg9IjIiIHBvaW50cz0iMSw5IDksNi4zMzM0Ii8+ICAKICA8cGF0aCBkPSJNOSw5IGgwIiBzdHJva2U9IiMwMGU2YTgiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLXdpZHRoPSIyIi8+Cjwvc3ZnPgo=" />
 <!--
-© rebtra: v0.0.357
+© rebtra: v0.0.366
 Coil Crypto Rebase Tracer Tracker
 
 To contact me, do write at these :
@@ -251,7 +251,8 @@ color:#321;
 }
 #ct td {
  padding:12px;
- font-size:12px
+ font-size:12px;
+ text-align: center
 }
 #ct tr {
  background-color:rgba(0,31,0,0.5);
@@ -768,6 +769,7 @@ float:left
 		<div class="">
 			<h3 align="center">Recent history of basing</h3>
 			<div align="center">Sort using (↕)</div>
+			<div style="width:100%; overflow-x:auto">
 			<table id="ct" align="center">
 				<thead class="th">
 				<tr>
@@ -775,6 +777,9 @@ float:left
 					<td onclick="sortTable(0)">Time ↕</td>
 					<td onclick="sortTable(2)">Change ↕</td>
 					<td onclick="sortTable(3)">Circulation ↕</td>
+					<td onclick="sortTable(4)">Oracle Price ↕</td>
+					<td onclick="sortTable(5)">Adjustment ↕</td>
+					<td onclick="sortTable(6)">Target ↕</td>
 				</tr>
 				</thead>
 				<tr class="zf">
@@ -782,8 +787,12 @@ float:left
 					<td class="ze">Initial Total Supply</td>
 					<td class="ze">0.0000%</td>
 					<td class="ze">3 000 000</td>
+					<td class="ze">1.0000</td>
+					<td class="ze">0.0000</td>
+					<td class="ze">1.0000</td>
 				</tr>
 			</table>
+			</div>
 			<br><div align="center">(<font color="#0f0">Rebase</font> ║ <font color="#f0f">Neutral</font> ║ <font color="#f00">Debase</font>)</div>
 		</div>
 		<div align="center">‿</div>
@@ -912,7 +921,7 @@ float:left
 </details>
 </div>
 <br>
-<h1 class="footr" align="right">rebtra <i>v0.0.357</i></h1>
+<h1 class="footr" align="right">rebtra <i>v0.0.366</i></h1>
 <h2><!--9Xo is a public unit of E.X. (I) Technologies-->
 <div align="right"><font size="3">@
 <i><a style="color:gold;background-color:purple;text-decoration-line: none;" href="https://t.me/itsN1X">its<b>N1</b>X #2551</a><br>++♥;</i></font></div>
@@ -997,6 +1006,14 @@ float:left
 <script src="d3.v4.min.js"></script>
 <script>var t=(Math.trunc(Date.now()/1000))%9;
 for(let j=0;j<t;j++){S(j);}
+function bbiiggiinntt(n){
+  if(n.substr(0,1)=="f")
+  {
+		while (n.split("")[0]=="f") {n=n.substr(1,n.length-1)};
+		return -1*(16**n.length-parseInt("0x"+n));
+  }
+  else {return parseInt("0x"+n)}
+}
 FNBD=document.getElementById("fnbd");
 FNBZ=document.getElementById("fnbz");
 FNBT=document.getElementById("fnbt");
@@ -1006,7 +1023,6 @@ NT=document.getElementById("nt");
 TS=document.getElementById("ts");
 LT=document.getElementById("lt");
 LD=document.getElementById("ld");
-CT=document.getElementById("ct");
 er=new XMLHttpRequest();
 er.open("GET","https://api.etherscan.io/api?module=logs&action=getLogs&fromBlock=10079224&toBlock=latest&address=0x3936Ad01cf109a36489d93cabdA11cF062fd3d48&topic0=0x72725a3b1e5bd622d6bcd1339bb31279c351abe8f541ac7fd320f24e1b1641f2&apikey=E886KCIJYVFPED7GXEA5PR9I9WHCTBVHJ4",true);
 eg=new XMLHttpRequest();
@@ -1027,48 +1043,69 @@ ec=new XMLHttpRequest();
 ec.open("GET","https://api.etherscan.io/api?module=logs&action=getLogs&toBlock=latest&address=0x7f0c14f2f72ca782eea2835b9f63d3833b6669ab&topic0=0x41d948a7f29cc695f5d4b3ec147f766bffa165ddd317470fbe05c86d0a9c3e04&apikey=E886KCIJYVFPED7GXEA5PR9I9WHCTBVHJ4",true);
 eo=new XMLHttpRequest();
 eo.open("GET","https://api.etherscan.io/api?module=logs&action=getLogs&fromBlock=379224&toBlock=latest&address=0x90f98a4e55b2b07e46976e50885e1286b13aae8f&topic0=0x460fcc5a1888965d48c2cab000fe20da51b1297d995af79a1924e2312d0d82b3&apikey=E886KCIJYVFPED7GXEA5PR9I9WHCTBVHJ4",true);
-
-function mt(xD)
+function mt1(xD)
 {
-    for(let qq=0;qq<xD.length;qq++)
+CT=document.getElementById("ct");
+d2c=0;
+dps=3e6*1e9;
+for(let qq=0;qq<xD.length;qq++)
     {
         cr=document.createElement("tr");
         dn=document.createElement("td");
         dt=document.createElement("td");
         dc=document.createElement("td");
         ds=document.createElement("td");
-        dn.textContent=parseInt(xD[qq].topics[1]);
-        dt.innerHTML = (new Date(Number(xD[qq].timeStamp)*1000)).toLocaleString();
-        qq==0?dx=3e6:dx=parseInt(xD[(
-        //(qq==0)?0:
-        (qq-1))].data)/1e9;
-        //);
-        dz=parseInt(xD[qq].data)/1e9;
-        dc.textContent=((dz/dx-1)*100).toFixed(4) + "%";
-        ds.textContent=Number(dz.toFixed(0)).toLocaleString();
-        if((dz/dx-1)<0)
+        dp=document.createElement("td");
+        da=document.createElement("td");
+        dT=document.createElement("td");
+        //parseInt("0x"+ec[0].data.substr(64*3+2,64))
+        dn.textContent=qq+1;
+        dt.innerHTML = (new Date(parseInt("0x"+xD[qq].data.substr(64*3+2,64))*1000)).toLocaleString();
+        dpc=bbiiggiinntt(xD[qq].data.substr(64*2+2,64));
+        da.textContent=Math.trunc(dpc/1e9).toLocaleString();
+        dts=dps+dpc;
+        ds.textContent=Math.trunc(dts/1e9).toLocaleString();
+        dcr=100*(dts/dps-1);
+        dc.textContent=dcr.toFixed(4) + "%";
+        dps=dts;
+        console.log("d2c:",d2c,"tx:",xD[qq].transactionHash);
+        dT.textContent="$"+(parseInt("0x"+xD[qq].data.substr(64*1+2,64)-110356333333333339472)/1e20+1).toFixed(4);
+        dp.textContent="$"+(parseInt("0x"+xD[qq].data.substr(64*0+2,64))/1e18).toFixed(4);
+        if(dcr<0)
         {
         cr.setAttribute("class","zh");
         dn.setAttribute("class","zd");
         dt.setAttribute("class","zd");
         dc.setAttribute("class","zd");
         ds.setAttribute("class","zd");
+        dp.setAttribute("class","zd");
+        da.setAttribute("class","zd");
+        dT.setAttribute("class","zd");
         }
-        else if((dz/dx-1)==0)
+        else if(dcr==0)
         {
         cr.setAttribute("class","zf");
         dn.setAttribute("class","ze");
         dt.setAttribute("class","ze");
         dc.setAttribute("class","ze");
         ds.setAttribute("class","ze");
+        dp.setAttribute("class","ze");
+        da.setAttribute("class","ze");
+        dT.setAttribute("class","ze");
         }
         CT.appendChild(cr);
         cr.appendChild(dn);
         cr.appendChild(dt);
         cr.appendChild(dc);
         cr.appendChild(ds);
+        cr.appendChild(dp);
+        cr.appendChild(da);
+        cr.appendChild(dT);
     }
     sortTable(0);
+}
+function mt(xD)
+{
 document.getElementById("suchab").textContent=(parseInt(xD[xD.length-1].data)-parseInt(xD[xD.length-1-1].data))/1e9;
 tt=Number(xD[xD.length-1].timeStamp)*1000;
 oo=new Date(Date.now()-tt);
@@ -1078,32 +1115,32 @@ bn=new Date(82800000-((Date.now()-b1)%82800000));
 //if bn over (23hrs-9e5ms) === > 22h45m
 if(bn>(82800000-900000))
 {
-	NT.innerHTML	=`a moment!`;
-	FNBT.innerHTML	=`Basing window<br>is Open!`;
-	ND.innerHTML	= `<a href="https://etherscan.io/address/0x8a6d3d3a1b9648bbedde7899f2b1e7410fda2d75#writeContract" style="color:gold">Create</a> new base, <a href="https://etherscan.io/address/0xeaceac83cecca6beebc736edd6360d1633175b01#writeContract" style="color:gold">sync</a> reserves or <a href="https://coilcrypto.com/faq.php#collapse12" style="color:gold">learn</a> more.`;
-	FNBL.innerHTML=`<br>Please <a href="https://coilcrypto.com/faq.php#collapse12" style="color:gold">learn more</a> about calling functions<br>of COIL's smart contracts before<br>pressing the buttons below!<br><br><button class="tlb"><font size="4"><a style="color:gold;text-decoration-line:none" href="https://etherscan.io/address/0x8a6d3d3a1b9648bbedde7899f2b1e7410fda2d75#writeContract">create(new Base);</a></font></button><button class="tls"><font size="4"><a style="color:gold;text-decoration-line:none" href="https://etherscan.io/address/0xeaceac83cecca6beebc736edd6360d1633175b01#writeContract">sync(_reserves_);</a></font></button>`;
-	FNBD.textContent=`The basing window is open for only 15 minutes.`;
-	FNBZ.textContent="Please verify if the base has taken place prior to making one yourself.";
+NT.innerHTML	=`a moment!`;
+FNBT.innerHTML	=`Basing window<br>is Open!`;
+ND.innerHTML	= `<a href="https://etherscan.io/address/0x8a6d3d3a1b9648bbedde7899f2b1e7410fda2d75#writeContract" style="color:gold">Create</a> new base, <a href="https://etherscan.io/address/0xeaceac83cecca6beebc736edd6360d1633175b01#writeContract" style="color:gold">sync</a> reserves or <a href="https://coilcrypto.com/faq.php#collapse12" style="color:gold">learn</a> more.`;
+FNBL.innerHTML=`<br>Please <a href="https://coilcrypto.com/faq.php#collapse12" style="color:gold">learn more</a> about calling functions<br>of COIL's smart contracts before<br>pressing the buttons below!<br><br><button class="tlb"><font size="4"><a style="color:gold;text-decoration-line:none" href="https://etherscan.io/address/0x8a6d3d3a1b9648bbedde7899f2b1e7410fda2d75#writeContract">create(new Base);</a></font></button><button class="tls"><font size="4"><a style="color:gold;text-decoration-line:none" href="https://etherscan.io/address/0xeaceac83cecca6beebc736edd6360d1633175b01#writeContract">sync(_reserves_);</a></font></button>`;
+FNBD.textContent=`The basing window is open for only 15 minutes.`;
+FNBZ.textContent="Please verify if the base has taken place prior to making one yourself.";
 }
 else
 {
-	var vdc=new Date(Date.now()+bn.getTime());
-	ND.textContent=vdc;
-	FNBD.textContent=String(vdc).split("GMT")[0];
-	FNBZ.textContent="TZ: "+String(vdc).split("GMT")[1];
-	var fcdt = vdc.getTime();
-	var x = setInterval(function()
+var vdc=new Date(Date.now()+bn.getTime());
+ND.textContent=vdc;
+FNBD.textContent=String(vdc).split("GMT")[0];
+FNBZ.textContent="TZ: "+String(vdc).split("GMT")[1];
+var fcdt = vdc.getTime();
+var x = setInterval(function()
+{
+	var fcdg = fcdt - (new Date().getTime());
+	fcdcd = Math.floor((fcdg%(86400000))/3600000)+"h "+Math.floor((fcdg%(3600000))/60000)+"m "+Math.floor((fcdg%(60000))/1000)+"s";
+	NT.textContent=fcdcd;
+	FNBT.textContent=fcdcd;
+	if (fcdg < 0)
 	{
-		var fcdg = fcdt - (new Date().getTime());
-		fcdcd = Math.floor((fcdg%(86400000))/3600000)+"h "+Math.floor((fcdg%(3600000))/60000)+"m "+Math.floor((fcdg%(60000))/1000)+"s";
-		NT.textContent=fcdcd;
-		FNBT.textContent=fcdcd;
-		if (fcdg < 0)
-		{
-			clearInterval(x);
-			window.location.reload(true);
-		}
-	}, 1000);
+		clearInterval(x);
+		window.location.reload(true);
+	}
+}, 1000);
 }
 TS.textContent=(Math.trunc(parseInt(xD[xD.length-1].data)/1e9)).toLocaleString();
 LD.textContent=new Date(tt);
@@ -1111,26 +1148,26 @@ LD.textContent=new Date(tt);
 let flt="";
 oo.getUTCDate()>1?fltd=`${oo.getUTCDate()-1}d `:fltd="";
 LT.textContent=fltd+oo.getUTCHours()+"h "+oo.getUTCMinutes()+"m "+oo.getUTCSeconds()+"s";
-    //count total bases
-	var TCTBN = document.getElementById('tctbn');
-	TCTBN.textContent = parseInt(xD[xD.length-1]["topics"][1]);
-	//first base local time
-	var TCFBT = document.getElementById('tcfbt');
-	var TCFBA = document.getElementById('tcfba');
-	//Elapsed tbf::time
-	tbfbtime = new Date(Date.now()-parseInt(xD[0]["timeStamp"])*1e3);
-	TCFBA.textContent = (tbfbtime.getUTCFullYear()-1970)+"Y "+tbfbtime.getUTCMonth()+"M "+(tbfbtime.getUTCDate()-1)+"D "+tbfbtime.getUTCHours()+"h "+tbfbtime.getUTCMinutes()+"m "+tbfbtime.getUTCSeconds()+"s";
-	//tfb::time
-	TCFBT.textContent = new Date(parseInt(xD[0]["timeStamp"])*1e3);
-	//Age of Coil
-	tcaged = new Date(Date.now()-parseInt(0x5f39b034)*1e3);
-	//Not to be confused with elapsed time since first base
-	var TCAGET = document.getElementById('tcaget');
-	TCAGET.textContent = new Date(parseInt(0x5f39b034)*1e3);
-	//Age of Contract :: ERC20 Coil
-	//Created at time=0x5f39b034 in block=0xa2de63
-	var TCAGE = document.getElementById('tcage');
-	TCAGE.textContent = (tcaged.getUTCFullYear()-1970)+"Y "+tcaged.getUTCMonth()+"M "+(tcaged.getUTCDate()-1)+"D "+tcaged.getUTCHours()+"h "+tcaged.getUTCMinutes()+"m "+tcaged.getUTCSeconds()+"s";
+   //count total bases
+var TCTBN = document.getElementById('tctbn');
+TCTBN.textContent = parseInt(xD[xD.length-1]["topics"][1]);
+//first base local time
+var TCFBT = document.getElementById('tcfbt');
+var TCFBA = document.getElementById('tcfba');
+//Elapsed tbf::time
+tbfbtime = new Date(Date.now()-parseInt(xD[0]["timeStamp"])*1e3);
+TCFBA.textContent = (tbfbtime.getUTCFullYear()-1970)+"Y "+tbfbtime.getUTCMonth()+"M "+(tbfbtime.getUTCDate()-1)+"D "+tbfbtime.getUTCHours()+"h "+tbfbtime.getUTCMinutes()+"m "+tbfbtime.getUTCSeconds()+"s";
+//tfb::time
+TCFBT.textContent = new Date(parseInt(xD[0]["timeStamp"])*1e3);
+//Age of Coil
+tcaged = new Date(Date.now()-parseInt(0x5f39b034)*1e3);
+//Not to be confused with elapsed time since first base
+var TCAGET = document.getElementById('tcaget');
+TCAGET.textContent = new Date(parseInt(0x5f39b034)*1e3);
+//Age of Contract :: ERC20 Coil
+//Created at time=0x5f39b034 in block=0xa2de63
+var TCAGE = document.getElementById('tcage');
+TCAGE.textContent = (tcaged.getUTCFullYear()-1970)+"Y "+tcaged.getUTCMonth()+"M "+(tcaged.getUTCDate()-1)+"D "+tcaged.getUTCHours()+"h "+tcaged.getUTCMinutes()+"m "+tcaged.getUTCSeconds()+"s";
 }
 function chart1(cD)
 {
@@ -1199,7 +1236,7 @@ console.log(`
 	interact, view or download our
 	Softwares/product/Information.
 
-© rebtra: v0.0.357
+© rebtra: v0.0.366
 Coil Crypto Rebase Tracer Tracker
 
 D░░░░░░░░▄░░░░░░░░ ░░░░░▄░░░░
@@ -1485,8 +1522,8 @@ function sortTable(n) {
     r = t.rows;
     for (i = 1; i < (r.length - 1); i++) {
       v = false;
-      x = (r[i].getElementsByTagName("TD")[n].innerHTML).replace(/ |,|%/g,'');
-      y = (r[i + 1].getElementsByTagName("TD")[n].innerHTML).replace(/ |,|%/g,'');
+      x = (r[i].getElementsByTagName("TD")[n].innerHTML).replace(/ |\$|,|%/g,'');
+      y = (r[i + 1].getElementsByTagName("TD")[n].innerHTML).replace(/ |\$|,|%/g,'');
       if (b == "a") {
         if (Number(x) > Number(y)) {
           v= true;
@@ -1566,6 +1603,7 @@ eg1.onload = function()
 ec.onload = function()
 {
     var eo=JSON.parse(this.response);
+    mt1(eo.result);
     noc(eo.result);
 }
 cg.onload = function()
