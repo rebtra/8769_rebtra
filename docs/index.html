@@ -1479,9 +1479,13 @@ function noc(eC)
     lop = parseInt(eC[eC.length-1].data.substr(0,66));
 	var TCOPU = document.getElementById('tcopu');
 	TCOPU.textContent = (lop/1e18).toFixed(9);
+	//TEMP HOTFIX
+	document.getElementById('fopu').textContent = "$"+(lop/1e18).toLocaleString();
 //OraclePriceReportNumber
 	var TCOPUN = document.getElementById('tcopun');
 	TCOPUN.textContent = eC.length;
+	//TEMP HOTFIX
+	document.getElementById('fopun').textContent = (eC.length).toLocaleString();	
 //OraclePriceReportDetails
     correct=(lop/1e18-tarp)/tarp*10;
 	var TCOPUD = document.getElementById('tcopud');
@@ -1634,10 +1638,13 @@ eo.onload = function()
     TCOPUL.textContent = TCOPULtc.toFixed(9);
     TCOPULN = document.getElementById("tcopuln");
     TCOPULN.textContent = eof.length-1;
+	//TEMP HOTFIX
+	/*
 	var FOPU = document.getElementById('fopu');
 	FOPU.textContent = "$" + (TCOPULtc.toLocaleString());
 	var FOPUN = document.getElementById('fopun');
 	FOPUN.textContent = (eof.length-1).toLocaleString();
+	*/
 }
 function stcach(i)
 {
